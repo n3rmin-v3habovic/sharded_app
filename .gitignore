@@ -60,4 +60,6 @@ yarn-debug.log*
 # Redis data
 dump.rdb
 
+test/*
+
 /config/credentials/develop.key

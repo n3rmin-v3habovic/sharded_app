@@ -1,0 +1,21 @@
+<h1> Hello </h1>
+
+<div> Your current company is <%= current_user.company_title %> </div>
+
+<ul>
+  <% Company.all.each do |com| %>
+    <li>
+      <%= link_to(switch_dashboard_path(com), method: :post) do %>
+        switch to <b> <%= com.title %> </b>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+
+<p> Current company projects </p>
+
+<ol>
+  <% @projects.each do |project| %>
+    <li> Project: <b> <%= project.title %> </b> </li>
+  <% end %>
+</ol>
