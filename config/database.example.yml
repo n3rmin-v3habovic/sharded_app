@@ -1,0 +1,30 @@
+default: &default
+  adapter: postgresql
+  encoding: utf8
+  pool: 10
+  username: YOUR_DB_USER_NAME_HERE
+  password: YOUR_DB_USER_PASS_HERE
+
+development:
+  primary:
+    <<: *default
+    database: sharded_primary
+  primary_shard_one:
+    <<: *default
+    database: sharded_primary_dup
+  shared:
+    <<: *default
+    database: sharded_shared
+    migrations_paths: db/shared_migrate
+
+test:
+  primary:
+    <<: *default
+    database: sharded_primary_test
+  primary_shard_one:
+    <<: *default
+    database: sharded_primary_dup_test
+  shared:
+    <<: *default
+    database: sharded_shared_test
+    migrations_paths: db/shared_migrate
